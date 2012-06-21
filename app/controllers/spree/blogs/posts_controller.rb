@@ -29,7 +29,7 @@ class Spree::Blogs::PostsController < Spree::BaseController
       end    
       scope = scope.where("posted_at >= ? AND posted_at <= ?", start, stop)
     end
-    @posts = scope.page(params[:page]).per(Spree::Post.per_page)
+    @posts = scope.order('posted_at DESC').page(params[:page]).per(Spree::Post.per_page)
   end
   
   def search
