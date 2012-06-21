@@ -1,4 +1,4 @@
-<% disqus_short_name = SpreeEssentialBlog::Config.preferred_disqus_shortname %>
+<% disqus_short_name = ::SpreeEssentialBlog::Config.preferred_disqus_shortname %>
 <% if !disqus_short_name.blank? %>
   <div class="post-comments">
     <h3><%= t('spree.blogs.comments') %></h3>
@@ -7,6 +7,8 @@
         var disqus_shortname = <%== disqus_short_name.inspect %>;
         var disqus_identifier = <%== @post.path.inspect %>;
         var disqus_url = <%== request.url.inspect %>;
+        //TODO remove this when going live
+        var disqus_developer = 1;
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
