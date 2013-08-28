@@ -6,14 +6,14 @@
       <legend><%= t('.manage_categories') %></legend>
       <table class="index">
         <% @post_categories.each_with_index do |category, index| -%>
-          <tr id="<%= dom_id(category) %>" class="<%= index % 2 == 0 ? 'alt' : 'row' %>">
+          <tr id="<%= dom_id(category) %>" class="<%= cycle('even', 'odd') %>">
             <td>
               <%= check_box_tag "post[post_category_ids][]", category.id, @post.post_categories.include?(category), :id => "post_category_id_#{index}" -%>
               <%= label_tag "post_category_id_#{index}", category.name -%>
             </td>
-            <td class="options" style="width: 120px">
-              <%= link_to_with_icon('edit', t("edit"), edit_admin_post_category_url(@post, category.id)) %> &nbsp;
-              <%= link_to_delete category, {:url => admin_post_category_url(@post, category.id)} %>
+            <td class="actions align-center">
+              <%= link_to_edit_url edit_admin_post_category_url(@post, category.id), title: "admin_edit_#{dom_id(category)}", no_text: true %>
+              <%= link_to_delete category, {:url => admin_post_category_url(@post, category.id), no_text: true} %>
             </td>
           </tr>
         <% end -%>
@@ -24,22 +24,25 @@
     </fieldset>
   <% end %>
 </div>
-  
+
 <div id="new_category"></div>
-  
-<p><%= link_to icon('add') + ' ' + t("new_category"), new_admin_post_category_url(@post), :id => "btn_new_category" %></p>
-  
+
+<% content_for :page_actions do %>
+  <li id="new_category_link">
+    <%= button_link_to t('.new_category'), new_object_url, { :icon => 'icon-plus', :id => 'btn_new_category' } %>
+  </li>
+<% end %>
 
 <% content_for :head do %>
   <script type="text/javascript">
-    jQuery(document).ready(function(){  
-      
-      jQuery('#btn_new_category').click(function (event) { 
+    jQuery(document).ready(function(){
+
+      jQuery('#btn_new_category').click(function (event) {
         event.preventDefault();
         jQuery(this).hide();
         jQuery.ajax({type: 'GET', url: this.href, data: ({authenticity_token: AUTH_TOKEN}), success: function(r){ jQuery('#new_category').html(r);} });
       });
-      
+
     });
   </script>
 <% end %>

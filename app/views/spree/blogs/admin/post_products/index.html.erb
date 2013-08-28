@@ -1,5 +1,9 @@
 <%= render :partial => 'spree/blogs/admin/shared/post_tabs', :locals => {:current => "Related Products"} %>
 
+<% content_for :page_title do %>
+  - Related Products
+<% end %>
+
   <div id="add-line-item">
     <fieldset>
       <legend><%= t('.add_related_product') %></legend>
@@ -21,16 +25,15 @@
   </div>
 
   <% content_for :head do %>
-
     <%= csrf_meta_tag %>
     <%= javascript_tag "var expand_variants = false;" %>
-   
+
     <script type="text/javascript">
-    
+
       jQuery(document).ready(function(){
-        
+
         $("#add_product_name").product_autocomplete();
-      
+
         $("#add_related_product").live("click", function(){
           if($('#add_variant_id').val() == ''){ return false; }
           jQuery.ajax({ url: this.href, type: "POST",
@@ -43,8 +46,8 @@
           });
           return false;
         });
-        
-      
+
+
       });
     </script>
   <% end %>

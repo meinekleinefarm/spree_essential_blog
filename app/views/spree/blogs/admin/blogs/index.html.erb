@@ -1,13 +1,15 @@
 <%= render :partial => 'spree/admin/shared/configuration_menu' %>
 
-<h1>Listing Blogs</h1>
+<% content_for :page_title do %>
+  <%= t(:listing_blogs) %>
+<% end %>
 
 <table class="index">
   <thead>
 	<tr>
     	<th><%= sort_link @search, :name, t("activerecord.attributes.blog.name") %></th>
     	<th><%= sort_link @search, :live, t("activerecord.attributes.blog.permalink") %></th>
-    	<th><%= t("action") %></th>
+    	<th class="actions"><%= t("action") %></th>
 	</tr>
   </thead>
   <tbody>
@@ -15,9 +17,9 @@
     <tr id="<%= dom_id blog %>">
       <td><%= blog.name %></td>
       <td><%= blog.permalink %></td>
-      <td>
-      	<%= link_to_edit blog %> &nbsp;
-      	<%= link_to_delete blog %>
+      <td class="actions">
+      	<%= link_to_edit blog, no_text: true %> &nbsp;
+      	<%= link_to_delete blog, no_text: true %>
       </td>
     </tr>
     <% end %>
@@ -27,10 +29,11 @@
 <%= paginate @collection %>
 
 <div id="new_blog"></div>
-<br/>
-<p>
-    <%= link_to icon('add') + ' ' + t(".new_blog"), new_admin_blog_url, :id => "new_blog_link" %>
-</p>
+<% content_for :page_actions do %>
+  <li id="new_product_link">
+    <%= button_link_to t(:new_blog), new_object_url, { :icon => 'icon-plus', :id => 'new_blog_link' } %>
+  </li>
+<% end %>
 
 <% content_for :head do %>
   <script type="text/javascript">

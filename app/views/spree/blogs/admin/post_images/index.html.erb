@@ -5,18 +5,18 @@
     <tr>
       <th><%= t("thumbnail") %></th>
       <th><%= t("alt_text") %></th>
-      <th><%= t("action") %></th>
+      <th class="actions"><%= t("action") %></th>
     </tr>
   </thead>
   <tbody>
     <% @post.images.each do |image| %>
-      <tr id="<%= dom_id(image) %>">
+      <tr id="<%= dom_id(image) %>" class="<%= cycle('odd', 'even') %>">
         <td><span class="handle">&nbsp;</span>&nbsp; <%= link_to(image_tag(image.attachment.url(:mini)), image.attachment.url(:large)) %></td>
         <td><%= image.alt %></td>
-        <td class="actions">
-          <%= link_to_with_icon('edit', t("edit"), edit_admin_post_image_url(@post, image)) %>
+        <td class="actions align-center">
+          <%= link_to_edit_url edit_admin_post_image_url(@post, image), no_text: true %>
           &nbsp;
-          <%= link_to_delete image, {:url => admin_post_image_url(@post, image) }%>
+          <%= link_to_delete image, {:url => admin_post_image_url(@post, image), no_text: true }%>
         </td>
       </tr>
     <% end %>
@@ -25,9 +25,12 @@
 
 <div id="images"></div>
 <br/>
-<p>
-    <%= link_to icon('add') + ' ' + t("new_image"), new_admin_post_image_url(@post), :id => "new_image_link" %>
-</p>
+
+<% content_for :page_actions do %>
+  <li id="new_product_link">
+    <%= button_link_to t("new_image"), new_admin_post_image_url(@post), :id => "new_image_link", icon: 'icon-plus' %>
+  </li>
+<% end %>
 
 <% content_for :head do %>
   <script type="text/javascript">
