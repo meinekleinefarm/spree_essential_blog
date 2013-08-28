@@ -25,7 +25,7 @@
     <tr id="<%= dom_id post %>">
       <td><%= link_to post.title, object_url(post) %></td>
       <td><%= post.blog.nil? ? "n/a" : link_to(post.blog.name, admin_posts_path(:q => { :blog_id_eq => post.blog_id })) %></td>
-      <td><%= l post.posted_at, :format => :date_time %></td>
+      <td><%= l post.posted_at %></td>
       <td><%= post.live ? 'Yes' : 'No' %></td>
       <td class="actions">
       	<%= link_to_edit post, no_text: true %> &nbsp;

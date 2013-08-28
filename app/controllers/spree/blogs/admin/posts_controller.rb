@@ -32,7 +32,7 @@ class Spree::Blogs::Admin::PostsController < Spree::Admin::ResourceController
       params[:q] ||= {}
       params[:q][:meta_sort] ||= "posted_at.desc"
       @search = Spree::Post.ransack(params[:q])
-      @collection = @search.page(params[:page]).per(Spree::Post.per_page)
+      @collection = @search.result.page(params[:page]).per(Spree::Post.per_page)
     end
 
 end

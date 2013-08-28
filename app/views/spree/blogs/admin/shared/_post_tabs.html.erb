@@ -5,7 +5,7 @@
 <%= render :partial => 'spree/admin/shared/contents_sub_menu' %>
 
 <% content_for :sidebar_title do %>
-  <%= @post.title %><span class='sku'><%= l (@post.posted_at || Time.now), :format => :date_only %></span>
+  <%= @post.title %> &dash; <span class='sku'><%= l (@post.posted_at.to_date || Date.today), :format => :short %></span>
 <% end %>
 
 <% content_for :sidebar do %>
