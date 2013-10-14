@@ -1,0 +1,91 @@
+de:
+
+  activerecord:
+    attributes:
+      blog:
+        model_name: Blog
+        name: Name
+        permalink: Permalink
+      post:
+        model_name: Beitrag
+        title: Title
+        posted_at: erstellt am
+        body: Inhalt
+        live: Veröffentlicht
+        tags: Tags
+      post_category:
+        model_name: Kategorie
+        name: Name
+        permalink: Permalink
+
+  spree:
+
+    admin:
+      subnav:
+        posts: Beiträge
+
+    blogs:
+      admin:
+        blogs:
+          new:
+            new_blog: Neues Blog
+          index:
+            new_blog: Neues Blog
+
+
+        posts:
+          new:
+            new_post: Neuer Beitrag
+        post_products:
+          index:
+            add_related_product: Produkte hinzufügen
+        post_categories:
+          index:
+            manage_categories: Kategorien verwalten
+        new:
+          new_category: Neue Kategorie
+        edit:
+          edit_category: Kategorie bearbeiten
+
+        shared:
+          post_tabs:
+            post_details: Beitragsdetails
+            editing_post: Editing Post
+            related_products: Verwandte Produkte
+            post_categories: Kategorien
+      comments: Kommentare
+      home:
+        title: Neueste Beiträge
+      archive: Blog Archiv
+      no_posts: Keine Beiträge gefunden!
+      posts:
+        index:
+          blog: Blog
+          rss: RSS abonieren
+        archive:
+          headline: Archiv
+          where_to_next: Was nun?
+          go_to_store: "Einkaufen"
+          back_to_posts: "Zurück zum Blog"
+      settings:
+        blogs: Blogs verwalten
+        explain_blogs: Blogs für Beiträge anlegen oder bearbeiten.
+        disqus: Disqus Einstellungen
+        explain_disqus: Disqus Kommentare für Blog konfigurieren.
+        disqus_shortname: Disqus Kurzname
+      shared:
+        sidebar:
+          recent_posts: Neueste Beiträge
+          categories: Kategorien
+          archives: Archiv
+          view_archive: Ganzes Archiv ansehen
+          tags: Tags
+        preview:
+          read_more: weiterlesen
+        post_tabs:
+          editing_post: Editing Post
+          post_details: Beitragsdetails
+          related_products: Verwandte Produkte
+          post_categories: Kategorien
+      subnav:
+        posts: Blog Posts
