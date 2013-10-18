@@ -6,4 +6,6 @@ class Spree::PostProduct < ActiveRecord::Base
   validates_associated :post
   validates_associated :product
 
+  attr_accessible :post_id, :product_id, :position
+
 end

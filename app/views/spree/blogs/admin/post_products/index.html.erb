@@ -32,12 +32,9 @@
 
       jQuery(document).ready(function(){
 
-        $("#add_product_name").product_autocomplete();
-
-        $("#add_related_product").live("click", function(){
-          if($('#add_variant_id').val() == ''){ return false; }
+        $("#add_related_product").click(function(){
           jQuery.ajax({ url: this.href, type: "POST",
-              data: { 'variant_id' : $('#add_variant_id').val() },
+              data: { 'name' : $('#add_product_name').val() },
               success: function(data){
                 $('#products-table-wrapper').html(data);
                 $('#add_product_name').val('');

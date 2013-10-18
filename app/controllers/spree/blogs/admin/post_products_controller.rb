@@ -4,7 +4,7 @@ class Spree::Blogs::Admin::PostProductsController < Spree::Admin::BaseController
   
   def create
     position = @post.products.count
-    @product = Spree::Variant.find(params[:variant_id]).product
+    @product = Spree::Product.find_by_name(params[:name]) || Spree::Variant.find_by_sku(params[:name]).try(:product)
     Spree::PostProduct.create(:post_id => @post.id, :product_id => @product.id, :position => position)
     render :partial => "spree/blogs/admin/post_products/related_products_table", :locals => { :post => @post }, :layout => false
   end
