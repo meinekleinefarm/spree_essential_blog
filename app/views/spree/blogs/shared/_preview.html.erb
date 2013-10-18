@@ -1,8 +1,10 @@
 <div class="post-preview"  data-hook="post-preview">
 
   <div class="post-title"  data-hook="post-title">
-    <h2><%= link_to h(post.title), post_seo_path(@blog, post) %></h2>
-    <h5><%= date_full(post.posted_at) %></h5>
+    <h3><%= link_to h(post.title), post_seo_path(@blog, post) %></h3>
+    <span class="published_at"><%= I18n.l(post.posted_at) %></span>
+    | Kommentare:
+    <%= link_to post.title, full_post_path(@blog, post, anchor: 'disqus_thread') %>
   </div>
 
   <% if post.has_images? %>
@@ -15,4 +17,6 @@
   
   <p><%= link_to t('.read_more'), post_seo_path(@blog, post) %></p>
   
+  <%= render partial: "spree/blogs/shared/disqus_counts", locals: { post: post } %>
+
 </div>

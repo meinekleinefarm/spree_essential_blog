@@ -14,7 +14,7 @@ private
   end
   
   def get_sidebar
-    @archive_posts = default_scope.limit(10)
+    @archive_posts = default_scope.limit(5)
     @post_categories = @blog.categories.order(:name).all
     get_tags
   end

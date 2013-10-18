@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.post-images img {
+  width: 100%;
+}
+
 #posts-rss {
   display: block;
   float: right;

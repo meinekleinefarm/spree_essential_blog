@@ -5,8 +5,10 @@
 <div class="post" data-hook="post-show">
   
   <div class="post-title" data-hook="post-show-title">
-    <h5><%= h @post.posted_at.strftime('%A %B %d, %Y').gsub(/\s0/, ' ') %></h5> 
     <h1><%=h @post.title %></h1>
+    <span class="published_at"><%= I18n.l(@post.posted_at) %></span>
+    | Kommentare:
+    <%= link_to @post.title, full_post_path(@blog, @post, anchor: 'disqus_thread') %>
   </div>
   
   <% if @post.has_images? %>     
@@ -22,7 +24,7 @@
   <br class="clear"/>
   
   <div class="post-tags" data-hook="post-show-tags">
-    <h5>Tagged:</h5>
+    <h5><%= t('.tagged') %></h5>
     <p><%= @post.tags.collect{|tag| link_to(tag.name, search_posts_path(@blog, tag.name)) }.join(", ").html_safe %></p>
   </div>
 
@@ -31,7 +33,8 @@
       <%= render 'spree/shared/products', :products => @post.products %>
     </div>
   <% end %>
-  
-  <%= render "spree/blogs/shared/disqus_comments" if @blog_config %>
+
+  <%= render partial: "spree/blogs/shared/disqus_comments" %>
+  <%= render partial: "spree/blogs/shared/disqus_counts", locals: { post: @post } %>
 
 </div>

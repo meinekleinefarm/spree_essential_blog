@@ -66,6 +66,8 @@ en:
           where_to_next: Where to next?
           go_to_store: "Shop the Store"
           back_to_posts: "Back to the blog"           
+        show:
+          tagged: Tagged
       settings:
         blogs: Manage Blogs
         explain_blogs: Add or Edit Blogs for posts.
