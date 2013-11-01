@@ -10,7 +10,7 @@ module SpreeEssentialBlog::PostsControllerHelper
 private
   
   def default_scope
-    @blog.posts.live
+    @blog.posts.live.order('posted_at DESC')
   end
   
   def get_sidebar
