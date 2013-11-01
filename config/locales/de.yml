@@ -9,9 +9,9 @@ de:
       post:
         model_name: Beitrag
         title: Title
-        posted_at: erstellt am
+        posted_at: veröffentlicht am
         body: Inhalt
-        live: Veröffentlicht
+        live: Veröffentlicht?
         tags: Tags
       post_category:
         model_name: Kategorie
