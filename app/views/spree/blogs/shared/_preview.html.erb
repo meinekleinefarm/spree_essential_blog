@@ -8,7 +8,7 @@
   </div>
 
   <% if post.has_images? %>
-    <p class="post-images"><%= link_to image_tag(post.images.first.attachment.url, :alt => post.title), post_seo_path(@blog, post) %></p>
+    <p class="post-images"><%= link_to image_tag(post.images.first.attachment.url(:large), :alt => post.title), post_seo_path(@blog, post) %></p>
   <% end %>
 
   <%= post.rendered_preview %>
